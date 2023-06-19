@@ -1,7 +1,28 @@
 import React from "react";
 import Navbar from "../../../layouts/frontend/Navbar";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const baseUrl = process.env.REACT_APP_BASE_BACKEND_URL;
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    try {
+      await axios
+        .post(baseUrl + "/api/register", {
+          email: formData.get("email"),
+          password: formData.get("password"),
+        })
+
+        .then(navigate("/"));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       {" "}
@@ -14,7 +35,7 @@ const Login = () => {
                 <h4>Login</h4>
               </div>
               <div className="card-body">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="form-group mb-3">
                     <label>Email</label>
                     <input
