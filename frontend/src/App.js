@@ -5,6 +5,10 @@ import Login from "./components/frontend/auth/Login";
 import Register from "./components/frontend/auth/Register";
 import MasterLayout from "./layouts/admin/MasterLayout";
 import { Navigate, Route, Routes } from "react-router-dom";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = process.env.REACT_APP_BASE_BACKEND_URL;
 
 function App() {
   return (

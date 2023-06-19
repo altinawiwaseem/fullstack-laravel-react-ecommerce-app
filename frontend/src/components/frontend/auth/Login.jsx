@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const baseUrl = process.env.REACT_APP_BASE_BACKEND_URL;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -13,7 +12,7 @@ const Login = () => {
 
     try {
       await axios
-        .post(baseUrl + "/api/register", {
+        .post("api/register", {
           email: formData.get("email"),
           password: formData.get("password"),
         })
