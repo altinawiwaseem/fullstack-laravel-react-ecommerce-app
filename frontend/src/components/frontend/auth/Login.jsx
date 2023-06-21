@@ -12,12 +12,12 @@ const Login = () => {
 
     try {
       await axios
-        .post("api/register", {
+        .post("api/login", {
           email: formData.get("email"),
           password: formData.get("password"),
         })
 
-        .then(navigate("/"));
+        .then((data) => console.log("logindata", data));
     } catch (error) {
       console.log(error);
     }
@@ -37,20 +37,14 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                   <div className="form-group mb-3">
                     <label>Email</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="email"
-                      value={""}
-                    />
+                    <input type="text" className="form-control" name="email" />
                   </div>
                   <div className="form-group mb-3">
                     <label>Password</label>
                     <input
-                      type="text"
+                      type="password"
                       className="form-control"
                       name="password"
-                      value={""}
                     />
                   </div>
 
